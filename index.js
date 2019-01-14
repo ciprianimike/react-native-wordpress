@@ -17,7 +17,7 @@ import thunk from "redux-thunk"
 import logger from "redux-logger"
 import reducer from "./redux/reducers"
 
-import { createStackNavigator, createAppContainer } from 'react-navigation';
+import { createStackNavigator, createNavigationContainer } from 'react-navigation';
 import getSlideFromRightTransition from 'react-navigation-slide-from-right-transition';
 import Main from './containers/Main';
 import Detail from './containers/Detail';
@@ -25,18 +25,19 @@ import PostList from './containers/PostList';
 
 console.disableYellowBox = true;
 
-AppNavigator = createStackNavigator({
-  Main: { screen: Main},
-  Detail: { screen: Detail},
-  PostList: { screen: PostList},
-}
-, {
+const AppStackNavigator = createStackNavigator(
+  {
+    Main: { screen: Main},
+    Detail: { screen: Detail},
+    PostList: { screen: PostList},
+  }
+  ,{
     transitionConfig: getSlideFromRightTransition
   } //Soldan Sağa kayma efekti için (android)*/ 
 );
-App = createAppContainer(AppNavigator);
+NavigationApp = createNavigationContainer(AppStackNavigator);
 
-connect(App)
+connect(NavigationApp)
 
 const store = createStore(
   reducer,
@@ -52,7 +53,7 @@ var App = (data) => {
   console.log("DATA",data);
    return data.strings ? 
    <Provider store={store}>
-    <App  screenProps={{onLoad:data.onLoad, color:data.color, url:data.url, strings:data.strings ? data.strings : strings_en  }} />
+    <NavigationApp  screenProps={{onLoad:data.onLoad, color:data.color, url:data.url, strings:data.strings ? data.strings : strings_en  }} />
    </Provider>
    : null
 }
