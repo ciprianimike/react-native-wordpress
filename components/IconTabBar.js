@@ -1,7 +1,9 @@
 const React = require('react');
 import {connect} from "react-redux"
 const ReactNative = require('react-native');
+import ViewPropTypes from 'react-native';
 import PropTypes from 'prop-types';
+
 const {
   StyleSheet,
   Text,
@@ -25,9 +27,9 @@ class IconTabBar extends React.Component {
     activeTextColor: PropTypes.string,
     inactiveTextColor: PropTypes.string,
     textStyle: Text.propTypes.style,
-    tabStyle: View.propTypes.style,
+    tabStyle: ViewPropTypes.style,
     renderTab: PropTypes.func,
-    underlineStyle: View.propTypes.style,
+    underlineStyle: ViewPropTypes.style,
   };
 
   static defaultProps = {

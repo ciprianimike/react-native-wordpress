@@ -1,6 +1,8 @@
 const React = require('react');
 const ReactNative = require('react-native');
+import ViewPropTypes from 'react-native';
 import PropTypes from 'prop-types';
+
 const {
   View,
   Animated,
@@ -27,12 +29,12 @@ class MXtabBar extends React.Component {
     activeTextColor: PropTypes.string,
     inactiveTextColor: PropTypes.string,
     scrollOffset: PropTypes.number,
-    style: View.propTypes.style,
-    tabStyle: View.propTypes.style,
-    tabsContainerStyle: View.propTypes.style,
+    style: ViewPropTypes.style,
+    tabStyle: ViewPropTypes.style,
+    tabsContainerStyle: ViewPropTypes.style,
     textStyle: Text.propTypes.style,
     renderTab: PropTypes.func,
-    underlineStyle: View.propTypes.style,
+    underlineStyle: ViewPropTypes.style,
   };
 
   static defaultProps = {
